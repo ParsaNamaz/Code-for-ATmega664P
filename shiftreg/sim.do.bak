@@ -1,0 +1,11 @@
+restart -force -nowave
+add wave -position end  sim:/shiftreg/clk_i
+add wave -position end  sim:/shiftreg/res_n
+add wave -position end  sim:/shiftreg/ena_i
+
+force sim:/shiftreg/clk_i 0 0, 1 100us -repeat 200us
+force -freeze sim:/shiftreg/ena_i 1 0
+force -freeze sim:/shiftreg/res_n 1 0,0 50us,1 150us
+force -freeze sim:/shiftreg/ser_in_i 0 0,1 250us,0 350us
+run 2000us
+
